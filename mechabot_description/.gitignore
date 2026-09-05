@@ -1,0 +1,16 @@
+
+# Large AWS RoboMaker simulation assets
+models/aws_robomaker_*
+photos/
+
+# Large assets - transfer manually later
+models/
+photos/
+
+# ROS build folders
+build/
+install/
+log/
+
+# VS Code
+.vscode/

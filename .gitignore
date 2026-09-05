@@ -1,0 +1,13 @@
+# Large assets - copy manually later
+mechabot_description/models/
+mechabot_description/photos/
+
+# ROS generated folders
+build/
+install/
+log/
+
+# VS Code / Python
+.vscode/
+__pycache__/
+*.pyc
