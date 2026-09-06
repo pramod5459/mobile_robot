@@ -87,13 +87,24 @@ def generate_launch_description():
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
             "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
+            "/camera/image@sensor_msgs/msg/Image[gz.msgs.Image",
             
         
        
         ],
+
+        remappings=[
+            
+            ("/imu", "/imu/out"),
+        ]
     )
 
-    
+    ros_gz_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/camera/image_raw"]
+    )
 
     return LaunchDescription([
         model_arg,
@@ -103,5 +114,5 @@ def generate_launch_description():
         gazebo,
         gz_spawn_entity,
         gz_ros2_bridge,
-        
+        ros_gz_image_bridge
     ])
