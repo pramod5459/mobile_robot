@@ -26,6 +26,9 @@ setup(
         'console_scripts': [
             'read_lidar = mechabot_scripts.read_lidar:main',
             'read_imu = mechabot_scripts.read_imu:main',
+            'maze_solver = mechabot_scripts.maze_solver:main',
+            'read_camera = mechabot_scripts.read_camera:main',
+            'detect_marker = mechabot_scripts.detect_marker:main',
         ],
     },
 )

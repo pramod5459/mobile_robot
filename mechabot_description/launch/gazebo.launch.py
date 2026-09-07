@@ -22,7 +22,7 @@ def generate_launch_description():
         description="Absolute path to robot urdf file"
     )
 
-    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="empty")
+    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="qr_maze", description="Name of the world to load (without .world extension)")
 
     world_path = PathJoinSubstitution([
             mechabot_description,
@@ -75,7 +75,7 @@ def generate_launch_description():
             "-z", "0.0",  
             "-R", "0.0", 
             "-P", "0.0",
-            "-Y", "0.0", 
+            "-Y", "-1.57", 
         ],
     )
 
@@ -86,14 +86,19 @@ def generate_launch_description():
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
             "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
-            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU"
-            
-        
-       
+            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+            "/camera/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo",
         ],
+        remappings=[
+            ('/imu', '/imu/out'),
+        ]
     )
 
-    
+    ros_gz_image_bridge = Node(
+        package="ros_gz_image",
+        executable="image_bridge",
+        arguments=["/camera/image_raw"]
+    )
 
     return LaunchDescription([
         model_arg,
@@ -103,5 +108,5 @@ def generate_launch_description():
         gazebo,
         gz_spawn_entity,
         gz_ros2_bridge,
-        
+        ros_gz_image_bridge,
     ])
