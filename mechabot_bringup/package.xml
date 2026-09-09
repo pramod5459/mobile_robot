@@ -12,6 +12,7 @@
   <depend>mechabot_controller</depend>
   <depend>mechabot_mapping</depend>
   <depend>mechabot_localization</depend>
+  <depend>mechabot_navigation</depend>
   
 
   <test_depend>ament_lint_auto</test_depend>
