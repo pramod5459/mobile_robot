@@ -29,6 +29,7 @@ setup(
             'maze_solver = mechabot_scripts.maze_solver:main',
             'read_camera = mechabot_scripts.read_camera:main',
             'detect_marker = mechabot_scripts.detect_marker:main',
+            'detect_qr = mechabot_scripts.detect_qr:main',
         ],
     },
 )
