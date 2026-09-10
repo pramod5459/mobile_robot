@@ -32,7 +32,14 @@ def generate_launch_description():
             os.path.join(mechabot_navigation_pkg, "config", "controller_server.yaml"),
             {"use_sim_time": use_sim_time}
         ],
+
+        remappings=[
+        ("cmd_vel", "/wheel_controller/cmd_vel_unstamped")
+        ],
+
     )
+
+
     
     nav2_planner_server = Node(
         package="nav2_planner",
@@ -53,6 +60,9 @@ def generate_launch_description():
         parameters=[
             os.path.join(mechabot_navigation_pkg, "config", "behavior_server.yaml"),
             {"use_sim_time": use_sim_time}
+        ],
+        remappings=[
+        ("cmd_vel", "/wheel_controller/cmd_vel_unstamped")
         ],
     )
     

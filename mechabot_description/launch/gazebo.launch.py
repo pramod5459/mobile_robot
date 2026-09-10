@@ -22,7 +22,7 @@ def generate_launch_description():
         description="Absolute path to robot urdf file"
     )
 
-    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="qr_maze", description="Name of the world to load (without .world extension)")
+    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="small_house", description="Name of the world to load (without .world extension)")
 
     world_path = PathJoinSubstitution([
             mechabot_description,

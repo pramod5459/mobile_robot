@@ -11,12 +11,12 @@ slam_rviz_config_path = os.path.join(
     'slam.rviz'
 )
 
-# Path to Localization configuration
-localization_rviz_config_path = os.path.join(
-    get_package_share_directory('mechabot_localization'),
-    'rviz',
-    'global_localization.rviz'
-)
+# # Path to Localization configuration
+# localization_rviz_config_path = os.path.join(
+#     get_package_share_directory('mechabot_localization'),
+#     'rviz',
+#     'global_localization.rviz'
+# )
 
 def generate_launch_description():
 
@@ -50,24 +50,24 @@ def generate_launch_description():
         }.items()
     )
 
-    # slam = IncludeLaunchDescription(
-    #     os.path.join(
-    #         get_package_share_directory("mechabot_mapping"),
-    #         "launch",
-    #         "slam.launch.py"
-    #     ),
-    #     launch_arguments={
-    #         "use_sim_time": "True"
-    #     }.items()
-    # )
-
-    global_localization = IncludeLaunchDescription(
+    slam = IncludeLaunchDescription(
         os.path.join(
-            get_package_share_directory("mechabot_localization"),
-            "launch", 
-            "global_localization.launch.py"
-            ),
-        )
+            get_package_share_directory("mechabot_mapping"),
+            "launch",
+            "slam.launch.py"
+        ),
+        launch_arguments={
+            "use_sim_time": "True"
+        }.items()
+    )
+
+    # global_localization = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("mechabot_localization"),
+    #         "launch", 
+    #         "global_localization.launch.py"
+    #         ),
+    #     )
 
     # navigation = IncludeLaunchDescription(
     #         os.path.join(
@@ -82,16 +82,16 @@ def generate_launch_description():
         executable='rviz2', 
         name='rviz', 
         output='screen',
-        # arguments=['-d', slam_rviz_config_path]  #For Mapping
-        arguments=['-d', localization_rviz_config_path] #For Localization
+        arguments=['-d', slam_rviz_config_path]  #For Mapping
+        # arguments=['-d', localization_rviz_config_path] #For Localization
     )
 
     return LaunchDescription([
         gazebo,
         controller,
         joystick,
-        # slam,
-        global_localization,
+        slam,
+        # global_localization,
         rviz,
         #navigation,
     ])
