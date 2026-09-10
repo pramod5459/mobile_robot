@@ -19,7 +19,7 @@ controller_server:
     # Goal checker parameters
     general_goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
-      xy_goal_tolerance: 0.05
+      xy_goal_tolerance: 0.15
       yaw_goal_tolerance: 0.15
       stateful: True
     
@@ -52,7 +52,7 @@ controller_server:
       cost_scaling_dist: 0.3
       cost_scaling_gain: 1.0
       inflation_cost_scaling_factor: 3.0           
-      allow_reversing: true
+      allow_reversing: false
 
 local_costmap:
   local_costmap:
