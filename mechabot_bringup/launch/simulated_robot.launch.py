@@ -27,7 +27,7 @@ def generate_launch_description():
             "gazebo.launch.py"
         ),
         launch_arguments={
-            "world_name": "small_house"
+            "world_name": "maze_return"
         }.items()
     )
 
@@ -39,16 +39,16 @@ def generate_launch_description():
         ),
     )
     
-    joystick = IncludeLaunchDescription(
-        os.path.join(
-            get_package_share_directory("mechabot_controller"),
-            "launch",
-            "joystick.launch.py"
-        ),
-        launch_arguments={
-            "use_sim_time": "True"
-        }.items()
-    )
+    # joystick = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("mechabot_controller"),
+    #         "launch",
+    #         "joystick.launch.py"
+    #     ),
+    #     launch_arguments={
+    #         "use_sim_time": "True"
+    #     }.items()
+    # )
 
     # slam = IncludeLaunchDescription(
     #     os.path.join(
@@ -61,13 +61,13 @@ def generate_launch_description():
     #     }.items()
     # )
 
-    global_localization = IncludeLaunchDescription(
-        os.path.join(
-            get_package_share_directory("mechabot_localization"),
-            "launch", 
-            "global_localization.launch.py"
-            ),
-        )
+    # global_localization = IncludeLaunchDescription(
+    #     os.path.join(
+    #         get_package_share_directory("mechabot_localization"),
+    #         "launch", 
+    #         "global_localization.launch.py"
+    #         ),
+    #     )
 
     # navigation = IncludeLaunchDescription(
     #         os.path.join(
@@ -89,9 +89,9 @@ def generate_launch_description():
     return LaunchDescription([
         gazebo,
         controller,
-        joystick,
+        # joystick,
         # slam,
-        global_localization,
+        # global_localization,
         rviz,
-        #navigation,
+        # navigation,
     ])
